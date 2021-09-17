@@ -59,7 +59,7 @@ module.exports = {
           "style-loader",
           "css-loader",
           "less-loader",
-          "yaml-less-loader"
+          "yaml-less-loader",
         ],
       },
     ],

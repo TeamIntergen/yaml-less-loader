@@ -27,9 +27,7 @@ test("Reads a linked yml file with json content and outputs less variables", asy
   const stats = await compiler("test-json.less");
   const output = stats.toJson({ source: true }).modules[0].source;
 
-  expect(output).toBe(
-    'export default {"less":"@foo-bar: 12px;\\n"}'
-  );
+  expect(output).toBe('export default {"less":"@foo-bar: 12px;\\n"}');
 });
 
 test("Throws on an empty linked yml file", async () => {
@@ -37,7 +35,11 @@ test("Throws on an empty linked yml file", async () => {
     await compiler("test-empty.less");
     expect(true).toBe(false);
   } catch (e) {
-    expect(e[0].message.indexOf('Error: Yaml to Less script encountered an error transforming your YAML variables file. Check if your YAML parses correctly.') > 1).toBe(true);
+    expect(
+      e[0].message.indexOf(
+        "Error: Yaml to Less script encountered an error transforming your YAML variables file. Check if your YAML parses correctly."
+      ) > 1
+    ).toBe(true);
   }
 });
 
@@ -46,7 +48,11 @@ test("Throws when the imported yml is not valid", async () => {
     await compiler("test-invalid.less");
     expect(true).toBe(false);
   } catch (e) {
-    expect(e[0].message.indexOf('Error: Yaml to Less script encountered an error transforming your YAML variables file. Check if your YAML parses correctly.') > 1).toBe(true);
+    expect(
+      e[0].message.indexOf(
+        "Error: Yaml to Less script encountered an error transforming your YAML variables file. Check if your YAML parses correctly."
+      ) > 1
+    ).toBe(true);
   }
 });
 
@@ -56,7 +62,9 @@ test("throws when the imported yml file doesn't exist", async () => {
     // mandatory fail
     expect(true).toBe(false);
   } catch (e) {
-    expect(e[0].message.indexOf('Error: yamlToLess loader: can\'t load') > 1).toBe(true);
-    expect(e[0].message.indexOf('test-fail.yml') > 1).toBe(true);
+    expect(
+      e[0].message.indexOf("Error: yamlToLess loader: can't load") > 1
+    ).toBe(true);
+    expect(e[0].message.indexOf("test-fail.yml") > 1).toBe(true);
   }
 });
