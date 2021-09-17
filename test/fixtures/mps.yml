@@ -1,0 +1,8 @@
+mps:
+  type:
+    weight:
+      semi-bold: 600
+      regular: 400
+    base:
+      desktop:
+        font-size: '15px'
